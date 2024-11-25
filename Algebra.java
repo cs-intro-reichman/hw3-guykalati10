@@ -26,28 +26,61 @@ public class Algebra {
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
 		int count = x1;
+		if(x2>=0){
 		for(int i = 0 ; i < x2 ; i++){
+			count--;
+		}
+	}
+	else{
+		for(int i = 0 ; x2 < i ; i--){
 			count++;
 		}
+
+	}
 		return count;
-		
+	
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
 		int count = x1;
+		if(x2>=0){
 		for(int i = 0 ; i < x2 ; i++){
 			count--;
 		}
+	}
+	else{
+		for(int i = 0 ; x2 < i ; i--){
+			count++;
+		}
+
+	}
+
 		return count;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int count = 0;
+		if(x2>=0){
 		for(int i = 0 ; i < x2 ; i++){
 			count = plus(count, x1);
 		}
+	}
+	else{
+		if(x1>=0){
+			for(int i = 0 ; x2 < i ; i--){
+				count = plus(count, x1);
+			}
+		}
+		else{
+			for(int i = 0 ; x2 < i ; i--){
+				count = minus(count, x1);
+			}
+
+		}
+		
+	}
 		return count;
 	}
 
@@ -64,12 +97,45 @@ public class Algebra {
 	public static int div(int x1, int x2) {
 		int check = 0 ;
 		int count = 0 ;
-		while(check < x1){
-			check = plus(check, x2);
-			if(check<=x1){
-				count++;
+		if(x1>=0){
+			if(x2>=0){
+				while(check < x1){
+					check = plus(check, x2);
+					if(check<=x1){
+						count++;        
+					}
+				}
+			}
+			else{
+				while(check < x1){
+					check = minus(check, x2);
+					if(check<=x1){
+						count--;        
+					}
+				}
+
 			}
 		}
+		else{
+			if(x2>=0){
+				while(check > x1){
+					check = minus(check, x2);
+					if(check>=x1){
+						count--;        
+					}
+				}
+			}
+			else{
+				while(check > x1){
+					check = plus(check, x2);
+					if(check>=x1){
+						count++;        
+					}
+				}
+
+			}
+
+			}
 		return count;
 	}
 
@@ -77,6 +143,7 @@ public class Algebra {
 	public static int mod(int x1, int x2) {
 		int check = 0 ;
 		int count = 0 ;
+		
 		while(check < x1){
 			check = plus(check, x2);
 			if(check<=x1){
