@@ -28,12 +28,12 @@ public class Algebra {
 		int count = x1;
 		if(x2>=0){
 		for(int i = 0 ; i < x2 ; i++){
-			count--;
+			count++;
 		}
 	}
 	else{
 		for(int i = 0 ; x2 < i ; i--){
-			count++;
+			count--;
 		}
 
 	}
